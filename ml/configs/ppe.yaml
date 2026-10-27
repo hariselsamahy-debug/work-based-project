@@ -1,0 +1,13 @@
+# Produced by: python ml/preprocess.py --src datasets/PPE-DETECTION-14 --dst datasets/PPE-DETECTION-14-PREPROCESSED
+path: ../datasets/PPE-DETECTION-14-PREPROCESSED
+train: train/images
+val: valid/images
+test: test/images
+
+names:
+  0: Gloves
+  1: Hard_hat
+  2: Mask
+  3: Person
+  4: Safety_boots
+  5: Vest

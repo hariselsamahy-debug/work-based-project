@@ -1,0 +1,14 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+storage/
+models/*.pt
+!models/ppe.pt
+data/samples/*
+!data/samples/.gitkeep
+node_modules/
+frontend/dist/
+runs/
+.pytest_cache/
+*.tsbuildinfo

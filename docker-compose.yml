@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    env_file: .env
+    volumes:
+      - ./models:/srv/smart-ehs/models:ro
+      - ./data:/srv/smart-ehs/data:ro
+      - ./storage:/srv/smart-ehs/storage
+      - ./backend/app/cameras.yaml:/srv/smart-ehs/backend/app/cameras.yaml:ro
+    ports: ["8000:8000"]
+    # For GPU inference add: deploy: { resources: { reservations: { devices: [{ capabilities: [gpu] }] } } }
+
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["8080:80"]

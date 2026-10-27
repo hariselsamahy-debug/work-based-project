@@ -1,0 +1,31 @@
+# Site configuration: which models exist, how violations are decided, which cameras to watch.
+# Paths are relative to the project root.
+
+detectors:
+  ppe:
+    weights: models/ppe.pt
+    conf: 0.4
+  # Enable when the models are trained (see ml/datasets/README.md):
+  # fire_smoke:
+  #   weights: models/fire_smoke.pt
+  #   conf: 0.4
+  # fall:
+  #   weights: models/fall.pt
+  #   conf: 0.5
+
+rules:
+  # A Person box missing any of these raises a violation (NO_HARDHAT, NO_VEST, ...).
+  # Also available: Gloves, Mask, Safety_boots
+  required_ppe: [Hard_hat, Vest]
+  # A violation must be seen in this many consecutive inferred frames before it alerts.
+  debounce_frames: 5
+  # After alerting, the same camera + violation type stays quiet for this long.
+  cooldown_seconds: 60
+
+cameras:
+  # source: a video file, a webcam index ("0"), or an RTSP URL ("rtsp://user:pass@ip/stream")
+  - id: cam1
+    name: Demo Camera
+    zone: Hall 3
+    source: data/samples/demo.mp4
+    detectors: [ppe]

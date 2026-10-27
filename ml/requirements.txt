@@ -1,0 +1,6 @@
+ultralytics>=8.3
+roboflow>=1.1
+albumentations>=1.4
+opencv-python
+tqdm
+python-dotenv
